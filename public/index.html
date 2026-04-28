@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>The Lorenz Attractor</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>
+            body {
+                background-color: #000;
+                margin: 0px;
+                padding-left: 200px;
+                padding-right: 200px;
+                padding-top: 80px;
+            }
+            h1,
+            h2,
+            p {
+                color: #f0f0f0;
+            }
+            a {
+                color: #00ffff;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>The Lorenz Attractor</h1>
+        <h2>The Background</h2>
+        <p>
+            In the year 1961, something happened and it happened by mistake. Lorenz was a
+            meteorologist working at MIT. The computers then were nothing like what we have today.
+            To simulate fluids at all, one had to simplify the math drastically. The Navier-Stokes
+            equations are the gold standard, and we can simulate them today, but in 1961 that was a
+            pipe dream. Lorenz, the meteorologist, made drastic simplifications to the Navier-Stokes
+            equations that resulted in a system of three ordinary differential equations. The
+            equations are:
+        </p>
+        <img
+            style="filter: invert(100%)"
+            src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7928004d58943529a7be774575a62ca436a82a7f"
+        />
+        <p>
+            One day, Lorenz and his team wanted to re-run a simulation. The computer printed values
+            of the simulation to a physical tape. In the computer, the values had six decimal
+            places, but the values printed to the tape had only three. In most physical systems,
+            0.0001 makes no difference. Lorenz, on accident, was about to discover something. He
+            restarted the simulation using the tape's values with only three decimal points, and
+            presumably walked away to get a coffee. When he came back the computer was printing
+            values on the tape that looked nothing like the prior simulation. This was puzzling, but
+            Lorenz was smart and eager to figure out what was happening. He worked it out. He'd
+            accidentally discovered a chaotic system.
+        </p>
+        <h2>What is a Chaotic System?</h2>
+        <p>
+            A chaotic system is one where the system as a whole is incredibly sensitive to initial
+            conditions. Examples include the double pendulum, and rabbit populations. If a parameter
+            is tweaked by 0.0001, after some time, the system will look nothing like the former
+            system. Here's an analogy based in real life: Two childhood friends grow up in the same
+            neighborhood. On a global scale, that's like a 0.0001 or smaller difference. They go to
+            the same school, and constantly hang out. They should be pretty similar, but after
+            sometime, one's living in Europe with his wife and kids and the other is touring with a
+            Metal band as their sound guy. Life is chaotic. The chance encounters, the calculated
+            choices, the little 0.000000001 differences in their lives causes them to drift into
+            very different lives eventually even though they both started living on the same block,
+            going to the same school, doing largely the same stuff.
+        </p>
+        <h2>What You're About to See</h2>
+        <p>
+            When Lorenz worked out what he'd seen in the lab, he speculated: "Could a butterfly
+            flapping its wings in South America cause a tornado in Texas?" The math? It says yes.
+        </p>
+        <p>
+            This simulation recreates Lorenz's original 0.0001 rounding error that resulted in the
+            accidental discovery. There are two paths we'll follow, a cyan and a magenta path. At
+            first they will look identical. Eventually they won't.
+        </p>
+        <p><a href="/demo.html">Ready to see chaos in action?</a></p>
+    </body>
+</html>
