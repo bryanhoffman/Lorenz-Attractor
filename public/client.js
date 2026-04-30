@@ -21,9 +21,7 @@ class LorenzSystem {
 
         // how long the trails will be
         this.maxPoints = 3000;
-        // I made an efficiency trade off exhanging memory for compute time
-        // because I couldn't make the circular buffer work, three.js always
-        // had gaps and the path didn't look continuous anymore
+        // I made an efficiency trade off exchanging memory for compute time
         this.aBigNumber = 150000;
         this.currentPointCount = 0;
         // Our trail
@@ -32,7 +30,7 @@ class LorenzSystem {
         trailGeometry.setAttribute('position', new THREE.BufferAttribute(trailPositions, 3));
 
         this.line = new THREE.Line(trailGeometry, material);
-        // This helps when you zoom in points in the trail don't disappear
+        // This helps when you zoom in; points in the trail don't disappear
         this.line.frustumCulled = false;
         scene.add(this.line);
     }
@@ -53,7 +51,7 @@ class LorenzSystem {
     }
 
     // This function finds the derivatives at a single point RK4 uses four points
-    // ... well sort of only three but the midpoint it samples twice
+    // ... well sort of only three but the midpoint it samples twice (*)
     getLorenzDerivatives(position) {
         return {
             dx: this.sigma * (position.y - position.x),
@@ -62,18 +60,19 @@ class LorenzSystem {
         };
     }
 
-    // This use getLorenzDerivatives on those four (three) points
+    // This uses getLorenzDerivatives on those four (three) points
     getRK4Vals() {
         // The derivatives at the initial point ...
         const k1 = this.getLorenzDerivatives(this.position);
 
-        // ... inform where the second point is which ...
+        // ... inform where the second point which is ...
         const posK2 = {
             x: this.position.x + (this.h / 2) * k1.dx,
             y: this.position.y + (this.h / 2) * k1.dy,
             z: this.position.z + (this.h / 2) * k1.dz,
         };
 
+        // ... and we calculate the next set of derivatives which ...
         const k2 = this.getLorenzDerivatives(posK2);
 
         // ... informs how we sample the second point a second time ...
@@ -156,7 +155,7 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// Tried two ways to fix the "computer graphics z isn't math z" thing
+// Tried two ways to fix the "computer graphics 'z' isn't math 'z'" thing
 // Should be obvious which one I prefered
 //scene.rotation.x = -Math.PI / 2
 camera.up.set(0, 0, 1);
@@ -165,7 +164,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 // Added axes
 scene.add(new THREE.AxesHelper(50));
 // Changed the positon
-camera.position.set(60, 60, 60);
+camera.position.set(20, 60, 60);
 // Changed the focus
 controls.target.set(0, 0, 27);
 controls.update();
@@ -203,3 +202,5 @@ function render() {
 }
 
 animate();
+
+// (*) It is actually a fourth point after the k2 step.

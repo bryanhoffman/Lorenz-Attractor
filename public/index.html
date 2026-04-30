@@ -7,9 +7,8 @@
         <style>
             body {
                 background-color: #000;
-                margin: 0px;
-                padding-left: 200px;
-                padding-right: 200px;
+                margin: auto;
+                max-width: 800px;
                 padding-top: 80px;
             }
             h1,
@@ -30,9 +29,10 @@
             meteorologist working at MIT. The computers then were nothing like what we have today.
             To simulate fluids at all, one had to simplify the math drastically. The Navier-Stokes
             equations are the gold standard, and we can simulate them today, but in 1961 that was a
-            pipe dream. Lorenz, the meteorologist, made drastic simplifications to the Navier-Stokes
-            equations that resulted in a system of three ordinary differential equations. The
-            equations are:
+            pipe dream. Lorenz, the meteorologist, had an LGP-30, a computer the size of a desk that
+            was assembled of vacuum tubes. He did the best he could with the hardware. He made
+            <b>drastic simplifications</b> to an <b>approximation</b> of the Navier-Stokes equations
+            that resulted in a system of three ordinary differential equations. The equations are:
         </p>
         <img
             style="filter: invert(100%)"
@@ -52,16 +52,16 @@
         <h2>What is a Chaotic System?</h2>
         <p>
             A chaotic system is one where the system as a whole is incredibly sensitive to initial
-            conditions. Examples include the double pendulum, and rabbit populations. If a parameter
-            is tweaked by 0.0001, after some time, the system will look nothing like the former
-            system. Here's an analogy based in real life: Two childhood friends grow up in the same
-            neighborhood. On a global scale, that's like a 0.0001 or smaller difference. They go to
-            the same school, and constantly hang out. They should be pretty similar, but after
-            sometime, one's living in Europe with his wife and kids and the other is touring with a
-            Metal band as their sound guy. Life is chaotic. The chance encounters, the calculated
-            choices, the little 0.000000001 differences in their lives causes them to drift into
-            very different lives eventually even though they both started living on the same block,
-            going to the same school, doing largely the same stuff.
+            conditions. If a parameter is tweaked by 0.0001, after some time, the altered system
+            will look nothing like the former system. Here's an analogy based in real life: Two
+            childhood friends grow up in the same neighborhood. On a global scale, that's like a
+            0.0001 or smaller difference. They go to the same school, and constantly hang out. They
+            should be pretty similar, but after some time, one's living in Europe with his wife and
+            kids and the other is touring with a Metal band as their sound guy. Life is chaotic. The
+            chance encounters, the calculated choices, the little 0.000000001 differences in their
+            lives causes them to drift into very different lives eventually even though they both
+            started living on the same block, going to the same school, doing largely the same
+            stuff.
         </p>
         <h2>What You're About to See</h2>
         <p>
@@ -74,5 +74,9 @@
             first they will look identical. Eventually they won't.
         </p>
         <p><a href="/demo.html">Ready to see chaos in action?</a></p>
+        <p>
+            <b>Acknowledgement:</b> This project used the boilerplate code provided by Sean Bradley
+            found here: https://github.com/Sean-Bradley/Threejs-Boilerplate
+        </p>
     </body>
 </html>
