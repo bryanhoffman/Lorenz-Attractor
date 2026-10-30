@@ -7,7 +7,7 @@ class LorenzSystem {
     rho = 28;
     sigma = 10;
     beta = 8 / 3;
-    h = 0.01; // step size
+    h = 0.005; // step size
 
     constructor(initialPosition, color, scene) {
         // Hey it's that expand trick!
@@ -54,9 +54,9 @@ class LorenzSystem {
     // ... well sort of only three but the midpoint it samples twice (*)
     getLorenzDerivatives(position) {
         return {
-            dx: this.sigma * (position.y - position.x),
-            dy: position.x * (this.rho - position.z) - position.y,
-            dz: position.x * position.y - this.beta * position.z,
+            dx: -(3 - 2) * (position.z * position.y),
+            dy: (-(1 - 3) * (position.x * position.z)) / 2,
+            dz: (-(2 - 1) * (position.y * position.x)) / 3,
         };
     }
 
@@ -164,15 +164,15 @@ const controls = new OrbitControls(camera, renderer.domElement);
 // Added axes
 scene.add(new THREE.AxesHelper(50));
 // Changed the positon
-camera.position.set(20, 60, 60);
+camera.position.set(20, 20, 20);
 // Changed the focus
-controls.target.set(0, 0, 27);
+controls.target.set(0, 0, 0);
 controls.update();
 
 // Declare two LorenzSystems, one with a 0.0001 offset
 // Just like Lorenz did on accident
-let l1 = new LorenzSystem({ x: 1, y: 1, z: 1 }, { color: 0x00ffff }, scene);
-let l2 = new LorenzSystem({ x: 1, y: 1, z: 1.0001 }, { color: 0xff00ff }, scene);
+let l1 = new LorenzSystem({ x: 0.01, y: 4, z: 0.003 }, { color: 0x00ffff }, scene);
+let l2 = new LorenzSystem({ x: 4, y: 0.01, z: 0.5 }, { color: 0xff00ff }, scene);
 
 window.addEventListener(
     'resize',
